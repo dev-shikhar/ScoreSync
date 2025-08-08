@@ -12,7 +12,9 @@ const Competitions = () => {
   useEffect(() => {
     async function fetchCompName() {
       try {
-        const response = await fetch(process.env.BACKEND_URL + "/top-competitions");
+        const url = `${import.meta.env.VITE_BACKEND_URL}/top-competitions`;
+        console.log(url);
+        const response = await fetch(url);
         const data = await response.json();
         setCompList(data);
       } catch (error) {
