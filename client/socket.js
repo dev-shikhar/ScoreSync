@@ -1,6 +1,7 @@
 import { io } from "socket.io-client";
 
-const socket = io(process.env.BACKEND_URL, {
+console.log(import.meta.env.VITE_BACKEND_URL);
+const socket = io(import.meta.env.VITE_BACKEND_URL.BACKEND_URL, {
   autoConnect: false,
 });
 
