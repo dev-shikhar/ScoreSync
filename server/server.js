@@ -23,7 +23,7 @@ const io = new Server(httpServer, {
 registerSocketHandlers(io);
 
 connectDB();
-
+console.log(process.env.FRONTEND_URL);
 app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
 app.use(router);
