@@ -12,7 +12,7 @@ const Competitions = () => {
   useEffect(() => {
     async function fetchCompName() {
       try {
-        const response = await fetch("http://localhost:3000/top-competitions");
+        const response = await fetch(process.env.BACKEND_URL + "/top-competitions");
         const data = await response.json();
         setCompList(data);
       } catch (error) {
