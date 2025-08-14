@@ -64,7 +64,7 @@ const Navbar = () => {
         </button>
       </form>
       <div className="w-full"></div>
-      <div className="w-[80%] mx-auto mt-2">
+      {/* <div className="w-[80%] mx-auto mt-2">
         <ul className="flex text-white ">
           <li className="px-3 pt-2 rounded transition duration-300 hover:bg-[#ffffff1a] hover:opacity-80">
             <Link>
@@ -87,7 +87,7 @@ const Navbar = () => {
             </Link>
           </li>
         </ul>
-      </div>
+      </div> */}
     </nav>
   );
 };
