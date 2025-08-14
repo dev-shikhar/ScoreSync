@@ -30,6 +30,12 @@ const MatchDetails = () => {
     };
   }, [cleanId]);
 
+   const contextValue = {
+    matchId: cleanId,
+    status: matchData.matchDetails?.score.status || "Loading...",
+    matchData : matchData,
+  };
+
   return (
     <div className=" text-black dark:text-white mt-6">
       <ScoreBoard Score={matchData.matchDetails} />
@@ -37,7 +43,7 @@ const MatchDetails = () => {
         <Commentary events={matchData.events} />
         <div className="flex-3/5 w-3/5 px-4 pb-4 dark:bg-[#171C1F] bg-white shadow-lg rounded-2xl">
           <SubNav2 />
-          <MatchDataContext.Provider value={matchData}>
+          <MatchDataContext.Provider value={contextValue}>
             <Outlet />
           </MatchDataContext.Provider>
         </div>

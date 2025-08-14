@@ -23,7 +23,7 @@ const ScoreBoard = ({ Score }) => {
 
   if (!Score) {
     return (
-      <div className="h-[50vh] flex justify-center items-center">
+      <div className="h-screen  flex justify-center items-center">
         <GradientCircularProgress />
       </div>
     );

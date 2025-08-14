@@ -22,10 +22,6 @@ const LiveScore = () => {
     fetchScores(); // Initial fetch
 
     socket.on("daily-sch", (grouped) => {
-      if (!Array.isArray(grouped)) {
-        setGroupedByComp([]);
-        return;
-      }
       setGroupedByComp(grouped);
     });
     let yourDate = new Date();
@@ -33,7 +29,7 @@ const LiveScore = () => {
     yourDate = new Date(yourDate.getTime() - offset * 60 * 1000);
     let intervalId;
     if (yourDate.toISOString().split("T")[0] === date.format("YYYY-MM-DD")) {
-      intervalId = setInterval(fetchScores, 32000); 
+      intervalId = setInterval(fetchScores, 32000);
     }
     return () => {
       clearInterval(intervalId);
@@ -41,41 +37,42 @@ const LiveScore = () => {
     };
   }, [date]);
 
-
   return (
     <div className="mb-5 mr-5 w-[50%]">
       <div className="flex flex-col gap-1 text-black dark:text-white w-full p-2 bg-white dark:bg-[#111517] rounded-md">
         <SubNav setDate={handleDate} />
-        {groupedByComp.length === 0 ? 
-        (<div className="h-[300px] flex items-center justify-center text-3xl">
+        {groupedByComp.length === 0 ? (
+          <div className="h-[300px] flex items-center justify-center text-3xl">
             <GradientCircularProgress />
-        </div>) :
-        (groupedByComp.slice(0, visible).map(({ seasonName, details }) => (
-          <div
-            className="flex flex-wrap items-center my-2 border-b border-gray-200 dark:border-gray-700"
-            key={seasonName}
-          >
-            <div className="pl-2 w-[7.5%]">
-              <img
-                src="https://www.svgrepo.com/show/451131/no-image.svg"
-                width="30px"
-                height="30px"
-              ></img>
-            </div>
-            <div>
-              <p className="opacity-[0.5] text-xs">
-                {details[0].league.country}
-              </p>
-              <p className="text-l font-bold">{seasonName}</p>
-            </div>
-            <div className="w-full "></div>
-            <div className="w-full pb-4">
-              {details.map((comp, idx) => {
-                return <ScoreCard key={idx} details={comp} />;
-              })}
-            </div>
           </div>
-        )))}
+        ) : (
+          groupedByComp.slice(0, visible).map(({ seasonName, details }) => (
+            <div
+              className="flex flex-wrap items-center my-2 border-b border-gray-200 dark:border-gray-700"
+              key={seasonName}
+            >
+              <div className="pl-2 w-[7.5%]">
+                <img
+                  src="https://www.svgrepo.com/show/451131/no-image.svg"
+                  width="30px"
+                  height="30px"
+                ></img>
+              </div>
+              <div>
+                <p className="opacity-[0.5] text-xs">
+                  {details[0].league.country}
+                </p>
+                <p className="text-l font-bold">{seasonName}</p>
+              </div>
+              <div className="w-full "></div>
+              <div className="w-full pb-4">
+                {details.map((comp, idx) => {
+                  return <ScoreCard key={idx} details={comp} />;
+                })}
+              </div>
+            </div>
+          ))
+        )}
         {visible < groupedByComp.length && (
           <div className="w-full flex justify-center">
             <button

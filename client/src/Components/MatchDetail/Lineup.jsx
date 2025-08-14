@@ -421,13 +421,11 @@ const lineupData = [
   },
 ];
 
-const nullPhotoURL =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMIAAACUCAMAAAD26AbpAAAAM1BMVEXMzMz////Pz8/8+/zJycnp6enU1NT39/ff39/z8/PX19fs7Oza2tri4uLv7+/l5eXDw8Nk+7XSAAAEoElEQVR4nO2c2XLrIAxAWcTm/f+/9oLdNGniJDbISL7jM5npK6dilRFCXFxcXGwAblA3JA8Vf7ZZsEqczAJi4/s+aHkn+C56nAQAZX2Qj+3/wfXNKSxA+EFLHXl1kK7tGu49CpRp58bqtTAkieBZRwKgGdb//b9oHSWo2/kegOFdD3p00HrkOj9Bo+cmfjSYHaT2gmV38t8a/zgk4ohgJ6HG7QIpVK3l5gBmh8FMq1Ig+GhAv9dAShMFFB+F3TFYHPgogP8+Ea3RsnGALs9AylHwUFjWgywcj2kJRMg1iF2Jh8KeBeEZ3TNQgMYVKEjXUQuIzPn0TksehoKxvKAbagWRsSz/pac2sEUjIREnVlJy9kYvYSA+/xQHIYaBVABsuYGUpEmNuDtCoKNUmAr2FnccaRQwDKSkVEAZCqQ9CWNKTRgyg4wz/3+r0NIpKISFLREuhQLg/AoYOyRihSsKlwIOKLs82hPDgKNAuTqXZMEeIMwAgMdRIMzD4Jw7pSTMYSikI89EmNGDFsOgBUoFnOM/ZYYeZTBo2u8kGIeegfhrVWliO9IRfzNUxQv0QP7Zs3h18+QKpWEYGNwB6ItGg05pMGoFVbTjNixuV3UFB5+gOBjsu0v1hOdhUDCiKU+cj8QJJXy7VLiOI//mfEOpJuQoOMukG81h6DL6kuN0X1WlOJzaYInDzqlVszNQyu5KZwT6qxd/mBUUbB4PWhorWFymemBx2NqZQg/cBG6AajfMrbpVnIt7VGe+rRBjxzQAP8BcwvAhAqZjsTX9gmr6tUVCzwK8I3AHQPnnka11Y6eJumV7iD3K+t6ExGBMr6aJ8xh+C0zzbCtOW14oUknhsuqdZQSs8x84XAocuBQ4cF4FWCrOhY3MC8PJVobU3rhnbePK7BLxb9tFlZN4wDTF1q8kZbR2aZvK3yI1/3dnuoIbmB2an1DWbzg/u5GthfJr/WddoueTyLuRtta7EqvB8yhpu6Em4dOTEbvyqmG0fCptQXg3t35fbtiFjksuBmzQGUWe6REA03BYt8GOLrNKdZGgz2h0YW8H+ivhelKH2JURrv8HygkWfCi/gpHqPMkcVNlX8wcHQ3O1TYkxewy8QNKZQORORG8cqhsoi2oQqf3hKg5kzObfHCqeUKFDDcCCHisesqFzuJ3oh1HVutcTY/DuEaoydK1bJVg3tdeoVPv88vUDD13lgzrOBeH3Esc7QHmx/2cOvx4DWIUj7xmOXqeRqjrpHLCqgz9zaGnPEYvyK+7AVBlWWSqdA2y5JILCcNCslN7TqqRw0NMY0Byzt1vFHeIA3x7pRKU9QGHeYNdT0PhZjXThq6ZCqmvApp/zhxXDYLAdyqoUcsDOaRxyWP6MRn7LTX26cHcQyKPB1hzJN3DD0FIoYBZoQFN1Pv0FcW2AlkYBb7cHtu6qdgdtXgVTd1W7Y7DCMFU66byC9hCaJelECY3Uk7DeosphRAoDyhsFeSAlM47O330CZ6+3ubzlCJC+52J9ms0C5bmY8ur+ElC2q7b6YecRjMGQtniEChi5+poJsDUQxnN61Z9SAeMLYk+rMJYbYF4WyeF7LuYfMJg6LhisXDoAAAAASUVORK5CYII=";
 const Lineup = () => {
-  const matchData = useContext(MatchDataContext);
-
+  const {matchData} = useContext(MatchDataContext);
   const lineup = matchData?.lineups;
-  // const lineup = lineupData;
+  // const lineup = lineupData 
+
  if (!lineup || lineup.length < 2) {
   return (
     <div className="flex flex-col gap-4 justify-center items-center text-center p-8 min-h-[400px]">
@@ -503,7 +501,7 @@ const Lineup = () => {
               .map((columnKey) => (
                 <div
                   key={`home-col-${columnKey}`}
-                  className="flex flex-col justify-around text-center"
+                  className="flex flex-col-reverse justify-around text-center"
                 >
                   {homePlayersByColumn[columnKey].map(({ player }) => (
                     <FieldPlayer

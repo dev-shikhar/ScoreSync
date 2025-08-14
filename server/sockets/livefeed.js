@@ -38,10 +38,10 @@ const groupSchedulesBySeason = (schedules) => {
         };
         const res = await axios.request(options);
         const grouped = groupSchedulesBySeason(res.data.response);
-
+        
+        socket.emit("live_scores", grouped);
         await client.json.set("live","$",grouped);
         await client.expire("live",60);
-        socket.emit("live_scores", grouped);
       }
     } catch (err) {
       console.error("Error fetching live feed:", err.message);
