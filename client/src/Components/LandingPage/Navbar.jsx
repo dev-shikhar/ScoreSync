@@ -14,7 +14,7 @@ const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 flex flex-wrap justify-between items-center px-4 pt-4 shadow-md bg-[#2c3ec4] dark:bg-[#111517]">
+    <nav className="fixed top-0 left-0 w-full z-50 flex flex-wrap justify-between items-center px-4 pt-4 py-2 shadow-md bg-[#2c3ec4] dark:bg-[#111517]">
       <Link
         to="/"
         className="flex items-center space-x-1 text-2xl font-bold text-white"
